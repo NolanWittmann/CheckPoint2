@@ -1,3 +1,5 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import GameDetails from "./components/GameDetails";
 import GameList from "./components/GameList";
 import Header from "./components/Header";
 
@@ -8,8 +10,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header name={name} />
-      <GameList />
+      <BrowserRouter>
+        <Header name={name} />
+        <Routes>
+          <Route path="/" element={<GameList />} />
+          <Route path="/games/:id" element={<GameDetails />} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
   );
 }
